@@ -17,4 +17,4 @@ __pycache__/
 # Игнорирование файлов конфигурации операционной системы
 .DS_Store
 Thumbs.db# created by virtualenv automatically
-*
+
