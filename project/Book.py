@@ -13,6 +13,4 @@ class Book:
     def __str__(self):
         return f'"{self.name}" written by {self.author} in {self.published_year}, ID: {self.id}'
 
-book1 = Book('Three Comrades', 'Remarque', 1936, 8, 421)
-book2 = Book('Four Comrades', 'Remarque', 1936, 8, 421)
-print(book1, book2, sep='\n')
+

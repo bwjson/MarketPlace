@@ -1,4 +1,4 @@
-from Book import Book, book1, book2
+from Book import Book
 
 
 class MarketPlace:
@@ -20,6 +20,14 @@ class MarketPlace:
         else:
             raise ValueError("Your good's type was considered as a book")
 
+    def remove_good(self, good):
+        if isinstance(good, Book):
+            self.goods.remove(good)
+            print(f'Good ID: {good.id} was successfully removed'
+                  f'from {self.name} Shop ID: {self.id}')
+        else:
+            raise ValueError("Your good's type was considered as a book")
+
     def display_goods(self):
         if self.goods and len(self.goods) > 0:
             for good in self.goods:
@@ -27,9 +35,12 @@ class MarketPlace:
         else:
             print('The shop is empty. There is no goods')
 
+    def find_good(self, good_id):
+        for good in self.goods:
+            if good.id == good_id:
+                print(f'Your good is {good.name} with ID: {good.id}')
+                return
+        return None
 
-ozon1 = MarketPlace('Ozon', 'Astana', 'Kazakhstan')
 
-MarketPlace.add_good(ozon1, book1)
-MarketPlace.add_good(ozon1, book2)
-MarketPlace.display_goods(ozon1)
+
