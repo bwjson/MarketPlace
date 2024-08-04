@@ -23,10 +23,16 @@ class Database:
             self.conn.close()
 
     def execute_query(self, query, params):
-        with self.conn.cursor as cursor:
+        with self.conn.cursor() as cursor:
             cursor.execute(query, params)
-            self.conn.commit()
-            return cursor
+            if query.strip().upper().startswith('SELECT'):
+                return cursor.fetchall()
+            elif query.strip().upper().startswith('INSERT') or query.strip().upper().startswith('UPDATE') or query.strip().upper().startswith('DELETE'):
+                self.conn.commit()
+                return cursor.fetchone()
+            else:
+                self.conn.commit()
+                return None
 
 
 
