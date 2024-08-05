@@ -27,7 +27,7 @@ class Database:
             cursor.execute(query, params)
             if query.strip().upper().startswith('SELECT'):
                 return cursor.fetchall()
-            elif query.strip().upper().startswith('INSERT') or query.strip().upper().startswith('UPDATE') or query.strip().upper().startswith('DELETE'):
+            elif query.strip().upper().startswith('INSERT'):
                 self.conn.commit()
                 return cursor.fetchone()
             else:
